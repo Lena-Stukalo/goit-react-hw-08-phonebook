@@ -1,17 +1,23 @@
 import { useState, useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ChangeFilter, Add, Remove, FromLocal } from './redux/store';
 import { nanoid } from 'nanoid';
 
 import Form from './form/Form';
 import Contacts from './contacts/Contacts';
+
 export default function App() {
-  const [contacts, setContacts] = useState([]);
-  const [filter, setfilter] = useState('');
+  const contacts = useSelector(state => state.contacts.items);
+  const filter = useSelector(state => state.contacts.filter);
   const isFirstTime = useRef(true);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const localContacts = JSON.parse(localStorage.getItem('contacts'));
     if (localContacts) {
-      setContacts([...localContacts]);
+      dispatch(FromLocal([...localContacts]));
+      //setContacts([...localContacts]);
     }
   }, []);
 
@@ -37,14 +43,17 @@ export default function App() {
       number: number,
       id: nanoid(),
     };
-    setContacts(prevState => [contact, ...prevState]);
+    dispatch(Add(contact));
+    //setContacts(prevState => [contact, ...prevState]);
   };
 
   const onDeleteClick = id => {
-    setContacts(prevState => prevState.filter(contact => contact.id !== id));
+    dispatch(Remove(id));
+    //setContacts(prevState => prevState.filter(contact => contact.id !== id));
   };
   const onFilterChange = event => {
-    setfilter(event.target.value);
+    dispatch(ChangeFilter(event.target.value));
+    //setfilter(event.target.value);
   };
   const calculateContacts = () => {
     const normalizeFilter = filter.toLowerCase();
