@@ -13,11 +13,11 @@ export default function App() {
 
   const dispatch = useDispatch();
 
-  /* fetch posts when component loads */
   useEffect(() => {
     const localContacts = JSON.parse(localStorage.getItem('contacts'));
     if (localContacts) {
       dispatch(FromLocal([...localContacts]));
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }
   }, []);
 
