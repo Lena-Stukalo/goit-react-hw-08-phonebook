@@ -17,8 +17,8 @@ export default function App() {
     const localContacts = JSON.parse(localStorage.getItem('contacts'));
     if (localContacts) {
       dispatch(FromLocal([...localContacts]));
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
