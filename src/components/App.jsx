@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ChangeFilter, Add, Remove, FromLocal } from './redux/store';
 import { nanoid } from 'nanoid';
@@ -17,7 +17,6 @@ export default function App() {
     const localContacts = JSON.parse(localStorage.getItem('contacts'));
     if (localContacts) {
       dispatch(FromLocal([...localContacts]));
-      //setContacts([...localContacts]);
     }
   }, []);
 
