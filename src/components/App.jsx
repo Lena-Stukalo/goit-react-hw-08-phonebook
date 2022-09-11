@@ -1,36 +1,24 @@
-import { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ChangeFilter, Add, Remove, FromLocal } from './redux/store';
-import { nanoid } from 'nanoid';
+import { ChangeFilter } from './redux/store';
+import {
+  useGetAllContactsQuery,
+  useDeleteContactMutation,
+  useCreateContactMutation,
+} from './redux/contactAPI';
 
 import Form from './form/Form';
 import Contacts from './contacts/Contacts';
 
 export default function App() {
-  const contacts = useSelector(state => state.contacts.items);
   const filter = useSelector(state => state.contacts.filter);
-  const isFirstTime = useRef(true);
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    const localContacts = JSON.parse(localStorage.getItem('contacts'));
-    if (localContacts) {
-      dispatch(FromLocal([...localContacts]));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    if (isFirstTime.current) {
-      isFirstTime.current = false;
-      return;
-    }
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  const { data, isFetching } = useGetAllContactsQuery();
+  const [deleteContact] = useDeleteContactMutation();
+  const [createContact] = useCreateContactMutation();
 
   const checkName = name => {
-    return contacts.find(contact => contact.name === name);
+    return data.find(contact => contact.name === name);
   };
 
   const onHendlerSubmit = (name, number) => {
@@ -41,28 +29,24 @@ export default function App() {
     const contact = {
       name: name,
       number: number,
-      id: nanoid(),
     };
-    dispatch(Add(contact));
-    //setContacts(prevState => [contact, ...prevState]);
+    createContact(contact);
   };
 
-  const onDeleteClick = id => {
-    dispatch(Remove(id));
-    //setContacts(prevState => prevState.filter(contact => contact.id !== id));
-  };
   const onFilterChange = event => {
     dispatch(ChangeFilter(event.target.value));
-    //setfilter(event.target.value);
   };
   const calculateContacts = () => {
     const normalizeFilter = filter.toLowerCase();
-    return contacts.filter(contact =>
+    return data.filter(contact =>
       contact.name.toLowerCase().includes(normalizeFilter)
     );
   };
+  let visibleContacts = [];
 
-  const visibleContacts = calculateContacts();
+  if (!isFetching) {
+    visibleContacts = calculateContacts();
+  }
   return (
     <div>
       <h1>Phonebook</h1>
@@ -71,7 +55,7 @@ export default function App() {
         contacts={visibleContacts}
         filter={filter}
         onFilterChange={onFilterChange}
-        onDeleteClick={onDeleteClick}
+        onDeleteClick={deleteContact}
       />
     </div>
   );
