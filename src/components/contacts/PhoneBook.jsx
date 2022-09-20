@@ -1,15 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { ChangeFilter } from './redux/store';
+import { ChangeFilter } from '../../redux/store';
 import {
   useGetAllContactsQuery,
   useDeleteContactMutation,
   useCreateContactMutation,
-} from './redux/contactAPI';
+} from '../../redux/contactAPI';
 
-import Form from './form/Form';
-import Contacts from './contacts/Contacts';
+import Form from '../form/Form';
+import Contacts from './Contacts';
 
-export default function App() {
+export default function Phonebook() {
   const filter = useSelector(state => state.contacts.filter);
 
   const dispatch = useDispatch();
