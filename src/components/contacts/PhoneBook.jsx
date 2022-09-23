@@ -1,18 +1,16 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { ChangeFilter } from '../../redux/store';
+import { useState } from 'react';
+
 import {
   useGetAllContactsQuery,
   useDeleteContactMutation,
   useCreateContactMutation,
-} from '../../redux/contactAPI';
+} from '../../redux/contacts/contactAPI';
 
 import Form from '../form/Form';
 import Contacts from './Contacts';
 
 export default function Phonebook() {
-  const filter = useSelector(state => state.contacts.filter);
-
-  const dispatch = useDispatch();
+  const [filter, setFilter] = useState('');
   const { data, isFetching } = useGetAllContactsQuery();
   const [deleteContact] = useDeleteContactMutation();
   const [createContact] = useCreateContactMutation();
@@ -27,24 +25,27 @@ export default function Phonebook() {
       return;
     }
     const contact = {
-      name: name,
-      number: number,
+      name,
+      number,
     };
     createContact(contact);
   };
 
   const onFilterChange = event => {
-    dispatch(ChangeFilter(event.target.value));
+    setFilter(event.target.value);
   };
   const calculateContacts = () => {
     const normalizeFilter = filter.toLowerCase();
-    return data.filter(contact =>
-      contact.name.toLowerCase().includes(normalizeFilter)
-    );
+    if (data) {
+      return data.filter(contact =>
+        contact.name.toLowerCase().includes(normalizeFilter)
+      );
+    }
   };
+
   let visibleContacts = [];
 
-  if (!isFetching) {
+  if (!isFetching && data) {
     visibleContacts = calculateContacts();
   }
   return (

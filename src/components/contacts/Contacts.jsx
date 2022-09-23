@@ -12,7 +12,7 @@ const Contacts = ({ contacts, filter, onFilterChange, onDeleteClick }) => {
           return (
             <li key={contact.id} className={css.item}>
               <p>
-                {contact.name} {contact.phone}
+                {contact.name} {contact.number}
               </p>
               <button
                 type="button"

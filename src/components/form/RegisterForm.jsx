@@ -1,16 +1,19 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import authOperation from '../../redux/auth/authOperations';
 import css from './Form.module.css';
 const RegisterForm = () => {
-  const [login, setLogin] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const dispatch = useDispatch();
 
   const onInputChange = event => {
     const { name } = event.target;
     switch (name) {
-      case 'login':
-        setLogin(event.target.value);
+      case 'email':
+        setEmail(event.target.value);
         break;
       case 'password':
         setPassword(event.target.value);
@@ -23,8 +26,16 @@ const RegisterForm = () => {
     }
   };
 
+  const hendleSubmit = e => {
+    e.preventDefault();
+    dispatch(authOperation.register({ name, email, password }));
+    setName('');
+    setPassword('');
+    setEmail('');
+  };
+
   return (
-    <form className={css.form}>
+    <form className={css.form} onSubmit={hendleSubmit}>
       <label className={css.label}>
         <span>Name:</span>
         <input
@@ -39,9 +50,9 @@ const RegisterForm = () => {
         <span>Email:</span>
         <input
           type="email"
-          name="login"
+          name="email"
           required
-          value={login}
+          value={email}
           onChange={onInputChange}
         />
       </label>
