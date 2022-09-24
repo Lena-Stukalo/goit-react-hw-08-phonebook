@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import AuthSelectors from 'redux/auth/authSelectors';
 import UserMenu from 'components/userMenu/UserMenu';

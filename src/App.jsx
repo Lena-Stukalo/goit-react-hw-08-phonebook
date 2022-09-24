@@ -5,12 +5,13 @@ import { useDispatch } from 'react-redux';
 import operation from './redux/auth/authOperations.js';
 import LayOut from 'components/layOut/LayOut';
 import Home from 'components/Home/Home';
-import Phonebook from 'components/contacts/PhoneBook';
 import Login from 'components/logIn/LogIn';
 import Register from 'components/register/Register';
 import PrivatRoute from 'components/PrivatRoute.jsx';
 import PublicRoute from 'components/PublicRoute.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+const Phonebook = lazy(() => import('./components/contacts/PhoneBook'));
 
 export const App = () => {
   const dispatch = useDispatch();
