@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 import authOperation from '../../redux/auth/authOperations';
-import css from './Form.module.css';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
 const RegisterForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -35,42 +36,48 @@ const RegisterForm = () => {
   };
 
   return (
-    <form className={css.form} onSubmit={hendleSubmit}>
-      <label className={css.label}>
-        <span>Name:</span>
-        <input
-          type="text"
-          name="name"
-          required
-          value={name}
-          onChange={onInputChange}
-        />
-      </label>
-      <label className={css.label}>
-        <span>Email:</span>
-        <input
-          type="email"
-          name="email"
-          required
-          value={email}
-          onChange={onInputChange}
-        />
-      </label>
-      <label className={css.label}>
-        <span>Password:</span>
-        <input
-          type="password"
-          name="password"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-          value={password}
-          onChange={onInputChange}
-        />
-      </label>
-      <button type="submit" className={css.button}>
+    <Form onSubmit={hendleSubmit}>
+      <Form.Group className="mb-3">
+        <Form.Label>
+          <span>Name:</span>
+          <Form.Control
+            type="text"
+            name="name"
+            required
+            value={name}
+            onChange={onInputChange}
+          />
+        </Form.Label>
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>
+          <span>Email:</span>
+          <Form.Control
+            type="email"
+            name="email"
+            required
+            value={email}
+            onChange={onInputChange}
+          />
+        </Form.Label>
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>
+          <span>Password:</span>
+          <Form.Control
+            type="password"
+            name="password"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+            value={password}
+            onChange={onInputChange}
+          />
+        </Form.Label>
+      </Form.Group>
+      <Button variant="primary" type="submit">
         Register
-      </button>
-    </form>
+      </Button>
+    </Form>
   );
 };
 

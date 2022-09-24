@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import authOperation from '../../redux/auth/authOperations';
-import css from './Form.module.css';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -28,32 +29,36 @@ const LoginForm = () => {
   };
 
   return (
-    <form className={css.form} onSubmit={hendleSubmit}>
-      <label className={css.label}>
-        <span>Email:</span>
-        <input
-          type="email"
-          name="email"
-          required
-          value={email}
-          onChange={onInputChange}
-        />
-      </label>
-      <label className={css.label}>
-        <span>Pasword:</span>
-        <input
-          type="password"
-          name="password"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-          value={password}
-          onChange={onInputChange}
-        />
-      </label>
-      <button type="submit" className={css.button}>
+    <Form onSubmit={hendleSubmit}>
+      <Form.Group className="mb-3">
+        <Form.Label>
+          <span>Email:</span>
+          <Form.Control
+            type="email"
+            name="email"
+            required
+            value={email}
+            onChange={onInputChange}
+          />
+        </Form.Label>
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>
+          <span>Pasword:</span>
+          <Form.Control
+            type="password"
+            name="password"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+            value={password}
+            onChange={onInputChange}
+          />
+        </Form.Label>
+      </Form.Group>
+      <Button variant="primary" type="submit">
         Log in
-      </button>
-    </form>
+      </Button>
+    </Form>
   );
 };
 

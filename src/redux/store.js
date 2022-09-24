@@ -27,12 +27,14 @@ export const store = configureStore({
     contacts: contactSlice.reducer,
     [contactsApi.reducerPath]: contactsApi.reducer,
   },
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
+  middleware: getDefaultMiddleware => [
+    ...getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
+    contactsApi.middleware,
+  ],
 });
 export const persistor = persistStore(store);
 setupListeners(store.dispatch);

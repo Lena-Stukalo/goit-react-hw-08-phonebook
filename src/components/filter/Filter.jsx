@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types';
-import css from './Filter.module.css';
+import Form from 'react-bootstrap/Form';
 
 const Filter = ({ filter, onFilterChange }) => {
   return (
     <div>
-      <label htmlFor="" className={css.filter}>
-        <span>Find Contact</span>
-        <input type="text" value={filter} onChange={onFilterChange} />
-      </label>
+      <Form.Group className="mb-3">
+        <Form.Label htmlFor="">
+          <span>Find Contact</span>
+          <Form.Control type="text" value={filter} onChange={onFilterChange} />
+        </Form.Label>
+      </Form.Group>
     </div>
   );
 };

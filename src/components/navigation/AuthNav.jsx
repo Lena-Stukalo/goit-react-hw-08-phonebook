@@ -1,25 +1,17 @@
 import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
 
-const NavItem = styled(NavLink)`
-  display: block;
-  padding: 10px;
-  font-size: 16px;
-  color: black;
-  text-decoration: none;
-
-  &.active {
-    background-color: #f7a372;
-    color: #fff;
-  }
-`;
+import Nav from 'react-bootstrap/Nav';
 
 const AuthNav = () => {
   return (
-    <div>
-      <NavItem to="/login">Log in</NavItem>
-      <NavItem to="/register">Register</NavItem>
-    </div>
+    <>
+      <Nav.Item as="li">
+        <Nav.Link href="login">Log in</Nav.Link>
+      </Nav.Item>
+      <Nav.Item as="li">
+        <Nav.Link href="register">Register</Nav.Link>
+      </Nav.Item>
+    </>
   );
 };
 export default AuthNav;

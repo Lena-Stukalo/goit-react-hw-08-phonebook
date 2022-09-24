@@ -6,7 +6,7 @@ import {
   useCreateContactMutation,
 } from '../../redux/contacts/contactAPI';
 
-import Form from '../form/Form';
+import ContactForm from 'components/form/Form';
 import Contacts from './Contacts';
 
 export default function Phonebook() {
@@ -51,7 +51,7 @@ export default function Phonebook() {
   return (
     <div>
       <h1>Phonebook</h1>
-      <Form onSubmit={onHendlerSubmit} />
+      <ContactForm onSubmit={onHendlerSubmit} />
       <Contacts
         contacts={visibleContacts}
         filter={filter}

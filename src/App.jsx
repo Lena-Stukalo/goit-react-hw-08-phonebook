@@ -8,6 +8,9 @@ import Home from 'components/Home/Home';
 import Phonebook from 'components/contacts/PhoneBook';
 import Login from 'components/logIn/LogIn';
 import Register from 'components/register/Register';
+import PrivatRoute from 'components/PrivatRoute.jsx';
+import PublicRoute from 'components/PublicRoute.jsx';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -20,9 +23,13 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<LayOut />}>
           <Route path="/" element={<Home />} />
-          <Route path="contacts" element={<Phonebook />} />
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
+          <Route element={<PublicRoute />}>
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+          </Route>
+          <Route element={<PrivatRoute />}>
+            <Route path="contacts" element={<Phonebook />} />
+          </Route>
         </Route>
       </Routes>
     </div>
