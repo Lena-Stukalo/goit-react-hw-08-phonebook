@@ -4,10 +4,10 @@ const AuthNav = () => {
   return (
     <>
       <Nav.Item as="li">
-        <Nav.Link href="/login">Log in</Nav.Link>
+        <Nav.Link href="login">Log in</Nav.Link>
       </Nav.Item>
       <Nav.Item as="li">
-        <Nav.Link href="/register">Register</Nav.Link>
+        <Nav.Link href="register">Register</Nav.Link>
       </Nav.Item>
     </>
   );
