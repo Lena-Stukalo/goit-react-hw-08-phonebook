@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import AuthSelectors from 'redux/auth/authSelectors';
 import UserMenu from 'components/userMenu/UserMenu';
 import AuthNav from './AuthNav';
@@ -12,12 +13,17 @@ const Navigation = () => {
       <Navbar bg="light" variant="light">
         <Nav fill as="ul">
           <Nav.Item as="li">
-            <Nav.Link href="/"> Home</Nav.Link>
-          </Nav.Item>
-          <Nav.Item as="li">
-            <Nav.Link href="/contacts">Contacts</Nav.Link>
+            <Nav.Link to="/" as={NavLink}>
+              {' '}
+              Home
+            </Nav.Link>
           </Nav.Item>
           {!isLoggedIn && <AuthNav />}
+          <Nav.Item as="li">
+            <Nav.Link to="/contacts" as={NavLink}>
+              Contacts
+            </Nav.Link>
+          </Nav.Item>
         </Nav>
         {isLoggedIn && (
           <Navbar.Collapse className="justify-content-end">
