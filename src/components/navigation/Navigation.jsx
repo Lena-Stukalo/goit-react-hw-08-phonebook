@@ -12,7 +12,7 @@ const Navigation = () => {
       <Navbar bg="light" variant="light">
         <Nav fill as="ul" defaultActiveKey="/">
           <Nav.Item as="li">
-            <Nav.Link href="/"> Home</Nav.Link>
+            <Nav.Link href=""> Home</Nav.Link>
           </Nav.Item>
           <Nav.Item as="li">
             <Nav.Link href="contacts">Contacts</Nav.Link>
