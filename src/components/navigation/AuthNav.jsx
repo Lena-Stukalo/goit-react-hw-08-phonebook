@@ -1,5 +1,3 @@
-import { NavLink } from 'react-router-dom';
-
 import Nav from 'react-bootstrap/Nav';
 
 const AuthNav = () => {
