@@ -1,4 +1,4 @@
-import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { contactsApi } from './contacts/contactAPI';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import {
