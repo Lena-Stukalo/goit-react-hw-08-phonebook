@@ -12,7 +12,7 @@ const Navigation = () => {
       <Navbar bg="light" variant="light">
         <Nav fill as="ul">
           <Nav.Item as="li">
-            <Nav.Link href="/goit-react-hw-08-phonebook/"> Home</Nav.Link>
+            <Nav.Link href="/"> Home</Nav.Link>
           </Nav.Item>
           <Nav.Item as="li">
             <Nav.Link href="/contacts">Contacts</Nav.Link>
