@@ -1,0 +1,14 @@
+.page{
+    border-left: solid #eec7fc 4px;
+    border-right: solid #eec7fc 4px;
+    padding: 50px;
+    border-radius: 3px;
+  }
+  .title{
+    color: #eec7fc;
+      font-family: 'Alfa Slab One', cursive;
+      font-weight: 400;
+      font-size: 25px;
+  line-height: 1.35;
+  text-align: center;
+  }

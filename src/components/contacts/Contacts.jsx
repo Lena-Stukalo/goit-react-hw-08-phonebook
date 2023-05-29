@@ -1,26 +1,30 @@
 import PropTypes from 'prop-types';
 import Filter from 'components/filter/Filter';
-import Button from 'react-bootstrap/Button';
-import ListGroup from 'react-bootstrap/ListGroup';
+import css from './Contacts.module.css'
 
 const Contacts = ({ contacts, filter, onFilterChange, onDeleteClick }) => {
   return (
     <div>
-      <h2>Contacts</h2>
+      <h2 className={css.title}>Contacts</h2>
       <Filter filter={filter} onFilterChange={onFilterChange}></Filter>
-      <ListGroup>
+      <ul >
         {contacts.map(contact => {
           return (
-            <ListGroup.Item
-              as="li"
+            <li
               variant="info"
-              className="d-flex justify-content-between align-items-start"
+              className={css.item}
               key={contact.id}
             >
-              <p>
-                {contact.name} {contact.number}
+              <p className={css.contact}>
+                <span className={css.name}>
+                {contact.name}:
+                </span>
+                <span >
+                {contact.number}
+                </span>
+                
               </p>
-              <Button
+              <button className={css.button}
                 variant="danger"
                 type="button"
                 onClick={() => {
@@ -28,11 +32,11 @@ const Contacts = ({ contacts, filter, onFilterChange, onDeleteClick }) => {
                 }}
               >
                 Delete
-              </Button>
-            </ListGroup.Item>
+              </button>
+            </li>
           );
         })}
-      </ListGroup>
+      </ul>
     </div>
   );
 };

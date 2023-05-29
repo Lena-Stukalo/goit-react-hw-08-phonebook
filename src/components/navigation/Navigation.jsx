@@ -3,34 +3,32 @@ import { NavLink } from 'react-router-dom';
 import AuthSelectors from 'redux/auth/authSelectors';
 import UserMenu from 'components/userMenu/UserMenu';
 import AuthNav from './AuthNav';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import css from './Navigation.module.css'
 
 const Navigation = () => {
   const isLoggedIn = useSelector(AuthSelectors.getIsLoggedIn);
   return (
-    <header>
-      <Navbar bg="light" variant="light">
-        <Nav fill as="ul">
-          <Nav.Item as="li">
-            <Nav.Link to="/" as={NavLink}>
-              {' '}
+    <header className={css.header}>
+      <nav className={css.nav}>
+        <ul className={css.list}>
+          <li className={css.item}>
+            <NavLink to="/" className={css.link}>
               Home
-            </Nav.Link>
-          </Nav.Item>
+            </NavLink>
+          </li>
           {!isLoggedIn && <AuthNav />}
-          <Nav.Item as="li">
-            <Nav.Link to="/contacts" as={NavLink}>
+          {isLoggedIn &&<li className={css.item}>
+            <NavLink to="/contacts" className={css.link}>
               Contacts
-            </Nav.Link>
-          </Nav.Item>
-        </Nav>
+            </NavLink>
+          </li>}
+        </ul>
         {isLoggedIn && (
-          <Navbar.Collapse className="justify-content-end">
+          <div className="">
             <UserMenu></UserMenu>
-          </Navbar.Collapse>
+          </div>
         )}
-      </Navbar>
+      </nav>
     </header>
   );
 };

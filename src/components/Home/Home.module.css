@@ -1,0 +1,29 @@
+@keyframes grow-and-shrink {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+.title{
+    color: #eec7fc;
+    font-family: 'Alfa Slab One', cursive;
+    font-weight: 400;
+    margin-bottom: 40px;
+    font-size: 45px;
+line-height: 1.35;
+text-align: center;
+animation: grow-and-shrink 3000ms cubic-bezier(0.9, 0.7, 0.5, 0.9) infinite;
+}
+.text{
+    color: #eec7fc;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 400;
+    font-size: 45px;
+line-height: 1.35;
+text-align: center;
+}

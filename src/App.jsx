@@ -9,7 +9,7 @@ import Login from 'components/logIn/LogIn';
 import Register from 'components/register/Register';
 import PrivatRoute from 'components/PrivatRoute.jsx';
 import PublicRoute from 'components/PublicRoute.jsx';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import css from './App.module.css'
 
 const Phonebook = lazy(() => import('./components/contacts/PhoneBook'));
 
@@ -20,7 +20,7 @@ export const App = () => {
     dispatch(operation.currentUser());
   }, [dispatch]);
   return (
-    <div>
+    <div className={css.container}>
       <Routes>
         <Route path="/" element={<LayOut />}>
           <Route path="/" element={<Home />} />

@@ -1,19 +1,18 @@
-import Nav from 'react-bootstrap/Nav';
 import { NavLink } from 'react-router-dom';
-
+import css from './Navigation.module.css'
 const AuthNav = () => {
   return (
     <>
-      <Nav.Item as="li">
-        <Nav.Link to="login" as={NavLink}>
+      <li className={css.item}>
+        <NavLink to="login" className={css.link}>
           Log in
-        </Nav.Link>
-      </Nav.Item>
-      <Nav.Item as="li">
-        <Nav.Link to="register" as={NavLink}>
+        </NavLink>
+      </li>
+      <li className={css.item}>
+        <NavLink to="register" className={css.link}>
           Register
-        </Nav.Link>
-      </Nav.Item>
+        </NavLink>
+      </li>
     </>
   );
 };

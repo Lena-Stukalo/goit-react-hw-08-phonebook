@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import css from './Contacts.module.css'
 import {
   useGetAllContactsQuery,
   useDeleteContactMutation,
@@ -49,8 +49,8 @@ export default function Phonebook() {
     visibleContacts = calculateContacts();
   }
   return (
-    <div>
-      <h1>Phonebook</h1>
+    <div className={css.page}>
+      <h1 className={css.title}>Phonebook</h1>
       <ContactForm onSubmit={onHendlerSubmit} />
       <Contacts
         contacts={visibleContacts}

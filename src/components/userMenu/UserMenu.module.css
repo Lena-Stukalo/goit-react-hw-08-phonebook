@@ -1,0 +1,31 @@
+.container{
+    display: flex;
+    align-items: center;
+}
+.button{
+    display: block;
+    border: solid #eec7fc 1px;
+    border-radius: 6px;
+    background-color: #773b8c;
+    color: #eec7fc;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+line-height: 1.35;
+text-align: center;
+padding: 10px;
+}
+.button:hover{
+    background-color: #eec7fc;
+    color: #773b8c;
+}
+.name{
+    display: block;
+    color: #eec7fc;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+line-height: 1.35;
+text-align: center;
+padding: 15px;
+}

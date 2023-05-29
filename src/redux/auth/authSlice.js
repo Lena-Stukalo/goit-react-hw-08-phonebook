@@ -14,19 +14,35 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.isLoggedIn = true;
     },
+    [authOperation.register.rejected](state, action) {
+      state.isLoggedIn = false;
+      
+    },
     [authOperation.login.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
+    },
+    [authOperation.login.rejected](state, action) {
+      state.isLoggedIn = false;
+     
     },
     [authOperation.logout.fulfilled](state, action) {
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
     },
+    [authOperation.logout.rejected](state, action) {
+      state.isLoggedIn = false;
+   
+    },
     [authOperation.currentUser.fulfilled](state, action) {
       state.user = action.payload;
       state.isLoggedIn = true;
+    },
+    [authOperation.currentUser.rejected](state, action) {
+      state.isLoggedIn = false;
+   
     },
   },
 });

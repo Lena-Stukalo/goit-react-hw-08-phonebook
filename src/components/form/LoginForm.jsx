@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import authOperation from '../../redux/auth/authOperations';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import css from './Form.module.css'
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,23 +28,25 @@ const LoginForm = () => {
   };
 
   return (
-    <Form onSubmit={hendleSubmit}>
-      <Form.Group className="mb-3">
-        <Form.Label>
-          <span>Email:</span>
-          <Form.Control
+    <form onSubmit={hendleSubmit} className={css.form}>
+      <div className={css.inputWraper}>
+        <label>
+          <span className={css.text} >Email:</span>
+          <input
+          className={css.input}
             type="email"
             name="email"
             required
             value={email}
             onChange={onInputChange}
           />
-        </Form.Label>
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>
-          <span>Pasword:</span>
-          <Form.Control
+        </label>
+      </div>
+      <div className={css.inputWraper}>
+        <label>
+          <span className={css.text} >Pasword:</span>
+          <input
+          className={css.input}
             type="password"
             name="password"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
@@ -53,12 +54,12 @@ const LoginForm = () => {
             value={password}
             onChange={onInputChange}
           />
-        </Form.Label>
-      </Form.Group>
-      <Button variant="primary" type="submit">
+        </label>
+      </div>
+      <button className={css.button} variant="primary" type="submit">
         Log in
-      </Button>
-    </Form>
+      </button>
+    </form>
   );
 };
 

@@ -10,16 +10,57 @@
   display: flex;
   justify-content: space-between;
 }
-.delete {
-  background-color: #fff;
-  color: #000;
-  border-radius: 4px;
-  border: solid black 1px;
-  font-size: 14px;
-  cursor: pointer;
-  padding: 10px;
-  width: 100px;
+.button{
+  display: block;
+  border: solid #eec7fc 1px;
+  border-radius: 6px;
+  background-color: #773b8c;
+  color: #eec7fc;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+line-height: 1.35;
+text-align: center;
+padding: 10px;
+min-width: 100px;
+
 }
-.delete:hover {
-  background-color: aquamarine;
+.button:hover{
+  background-color: #eec7fc;
+  color: #773b8c;
+}
+.contact{
+  display: flex;
+justify-content: space-around;
+align-items: center;
+width: 100%;
+  color: #eec7fc;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+line-height: 1.35;
+text-align: center;
+margin-right: 20px;
+}
+.name{
+  color: #eec7fc;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+line-height: 1.35;
+text-align: center;
+}
+.page{
+  border-left: solid #eec7fc 4px;
+  border-right: solid #eec7fc 4px;
+  padding: 50px;
+  border-radius: 3px;
+}
+.title{
+  color: #eec7fc;
+    font-family: 'Alfa Slab One', cursive;
+    font-weight: 400;
+    font-size: 25px;
+line-height: 1.35;
+text-align: center;
 }

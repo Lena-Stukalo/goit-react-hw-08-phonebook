@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import authOperation from '../../redux/auth/authOperations';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import css from './Form.module.css'
 
 const RegisterForm = () => {
   const [email, setEmail] = useState('');
@@ -36,35 +35,38 @@ const RegisterForm = () => {
   };
 
   return (
-    <Form onSubmit={hendleSubmit}>
-      <Form.Group className="mb-3">
-        <Form.Label>
-          <span>Name:</span>
-          <Form.Control
+    <form onSubmit={hendleSubmit} className={css.form}>
+      <div className={css.inputWraper}>
+        <label>
+          <span className={css.text}>Name:</span>
+          <input
+          className={css.input}
             type="text"
             name="name"
             required
             value={name}
             onChange={onInputChange}
           />
-        </Form.Label>
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>
-          <span>Email:</span>
-          <Form.Control
+        </label>
+      </div>
+      <div className={css.inputWraper}>
+        <label>
+          <span className={css.text}>Email:</span>
+          <input
+          className={css.input}
             type="email"
             name="email"
             required
             value={email}
             onChange={onInputChange}
           />
-        </Form.Label>
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>
-          <span>Password:</span>
-          <Form.Control
+        </label>
+      </div>
+      <div className={css.inputWraper}>
+        <label>
+          <span className={css.text}>Password:</span>
+          <input
+          className={css.input}
             type="password"
             name="password"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
@@ -72,12 +74,12 @@ const RegisterForm = () => {
             value={password}
             onChange={onInputChange}
           />
-        </Form.Label>
-      </Form.Group>
-      <Button variant="primary" type="submit">
+        </label>
+      </div>
+      <button className={css.button} variant="primary" type="submit">
         Register
-      </Button>
-    </Form>
+      </button>
+    </form>
   );
 };
 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import css from './Form.module.css'
 
 function ContactForm({ onSubmit }) {
   const [name, setName] = useState('');
@@ -28,11 +28,12 @@ function ContactForm({ onSubmit }) {
   };
 
   return (
-    <Form onSubmit={onSubmitForm}>
-      <Form.Group className="mb-3">
-        <Form.Label>
-          <span>Name:</span>
-          <Form.Control
+    <form onSubmit={onSubmitForm} className={css.form}>
+      <div className={css.inputWraper}>
+        <label>
+          <span className={css.text}>Name:</span>
+          <input
+          className={css.input}
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -41,12 +42,13 @@ function ContactForm({ onSubmit }) {
             value={name}
             onChange={onInputChange}
           />
-        </Form.Label>
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>
-          <span>Tel:</span>
-          <Form.Control
+        </label>
+      </div>
+      <div className={css.inputWraper}>
+        <label>
+          <span  className={css.text}>Tel:</span>
+          <input
+           className={css.input}
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -55,10 +57,10 @@ function ContactForm({ onSubmit }) {
             value={number}
             onChange={onInputChange}
           />
-        </Form.Label>
-      </Form.Group>
-      <Button type="submit">Add contact</Button>
-    </Form>
+        </label>
+      </div>
+      <button className={css.button} type="submit">Add contact</button>
+    </form>
   );
 }
 Form.propTypes = {
