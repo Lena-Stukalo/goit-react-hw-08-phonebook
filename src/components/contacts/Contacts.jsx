@@ -1,30 +1,22 @@
 import PropTypes from 'prop-types';
 import Filter from 'components/filter/Filter';
-import css from './Contacts.module.css'
+import css from './Contacts.module.css';
 
 const Contacts = ({ contacts, filter, onFilterChange, onDeleteClick }) => {
   return (
     <div>
       <h2 className={css.title}>Contacts</h2>
       <Filter filter={filter} onFilterChange={onFilterChange}></Filter>
-      <ul >
+      <ul>
         {contacts.map(contact => {
           return (
-            <li
-              variant="info"
-              className={css.item}
-              key={contact.id}
-            >
+            <li variant="info" className={css.item} key={contact.id}>
               <p className={css.contact}>
-                <span className={css.name}>
-                {contact.name}:
-                </span>
-                <span >
-                {contact.number}
-                </span>
-                
+                <span className={css.name}>{contact.name}:</span>
+                <span>{contact.number}</span>
               </p>
-              <button className={css.button}
+              <button
+                className={css.button}
                 variant="danger"
                 type="button"
                 onClick={() => {

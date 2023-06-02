@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import css from './Contacts.module.css'
+import css from './Contacts.module.css';
 import {
   useGetAllContactsQuery,
   useDeleteContactMutation,
